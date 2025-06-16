@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger House - ¡Las hamburguesas que te harán decir "OMG!"!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../assets/vendor/aos/dist/aos.css">
+
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <link rel="stylesheet" href="./styles/estilos.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+          <nav class="navbar navbar-expand-lg nav-mio">
+              <div class="container-fluid">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                  
+                    <img class="logo" src="./Imagenes/logo-img.jpeg" alt="Logo de Burger House">
+                
+                  <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=" btn-color"> Menu</span>
+                  </button>
+                  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item"><a class="nav-link" href="#ofertas">Ofertas Semanales</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#menu">Nuestro Menú</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#historia">Nuestra Historia</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#nosotros">Sobre Nosotros</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#reseñas">Reseñas</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </nav>
+           
+    </header>
+
+    <main id="menu" class="menu">
+        <h2>Nuestras Hamburguesas Estelares</h2>
+        <div id= "menuGrid" class="menu-grid"></div>
+
+        <section class="pizzas"  data-aos="flip-right">
+          <h2>Tambien tenemos pizzas</h2>
+          <p>Nuestras pizzas estilos Italiano, con una fermetacion de mas 48hr, son hechas de masa madre.</p>
+          
+          <div id="pizzas-card"class="pizzas-descripcion">
+              </div>
+        
+              
+          </div>
+      </section>
+
+      <section class="chivitos"  data-aos="flip-right">
+          <h2>Nuestros Chivitos, orgulloso uruguayo</h2>
+          <div class="chivi-descripcion">
+              <p>Nuestros chvitos hechos de lomo, y con todas las carecteristicas clasicas del chivito, lechuga, tomate, jamon, queso muzzarella, y huevo a la plancha
+              </p>
+              <img src="./Imagenes/chivito.jpeg" class="img-fluid img-pizzas" alt="...">
+          </div>
+      </section>
+
+    </main>
+    
+    <button id="carrrito-btn" class="carrito-btn">🛒</button>
+
+    <aside id="cart-panel" class="cart-panel">
+			<h2> Tu carrito</h2>
+			<div id="cartProdcutos" class="cart-items"></div>
+			<div id="total"class="total-carrito"><p>Total= </p> </div>
+			<button id="comprar" class="btn-comprar">Comprar</button>
+		</aside>
+
+
+    <footer>
+        <p>&copy; 2024 Burger House. ¡Donde la felicidad tiene forma de hamburguesa!</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <!--<script>
+        AOS.init();
+    </script>-->
+    <script src="./main.js"></script>
+</body>
+</html>
