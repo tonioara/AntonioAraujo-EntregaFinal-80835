@@ -3,8 +3,6 @@
 let carritoOpen=JSON.parse(localStorage.getItem('carritoAbierto')) || false
 
 
-
-
 /// USANDO Carrito
 let Carrito=JSON.parse(localStorage.getItem('carrito')) || []
 const total=document.getElementById('total')
@@ -14,13 +12,9 @@ comprar.addEventListener('click',()=>{
     localStorage.removeItem('carrito')
     mostrarCarrito();
 })
-
-
-
 const carritobtn= document.getElementById(`carrrito-btn`)
 const aside= document.getElementById('cart-panel')
 const cartProdcutos=document.getElementById('cartProdcutos')
-
 
 /// Card Hamburguesa
 const contenedorCard=document.getElementById('menuGrid')
@@ -28,8 +22,51 @@ const contenedorCard=document.getElementById('menuGrid')
 /// card Pizzas
 const contenedorCardPizzas=document.getElementById('pizzas-card')
 
-///FUNCIONALIDADES
+///FORMULARIO INICIO SESION
+const inicioSesion= document.getElementById('inicio-sesion')
+const inicioCard = document.getElementById('tarjeta-inicio');
+const registerCard = document.getElementById('registrarse');
+const mainContent = document.getElementById('pagina-completa');
+const verRegistroCard = document.getElementById('ver-registroCard');
+const verIniciarCard = document.getElementById('ver-iniciarCard');
+const cargarDatosInicio = document.getElementById('form-iniciar');
+const cargarDatosRegistro = document.getElementById('form-registrarse');
 
+const logoutButton = document.getElementById('logoutButton');
+
+inicioSesion.style.display='flex'
+inicioCard.style.display='flex'
+registerCard.style.display='none'
+
+verRegistroCard.addEventListener('click',()=>{
+    inicioCard.style.display='none'
+    registerCard.style.display='block'
+})
+verIniciarCard.addEventListener('click',()=>{
+    inicioCard.style.display='flex'
+    registerCard.style.display='none'
+})
+//Datos para el inicio de sesion
+const usuarioNombreInput=document.getElementById('username')
+const usuarioContraInput=document.getElementById('password')
+
+cargarDatosInicio.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    usuarioNombre=usuarioNombreInput.value.trim()
+    usuarioPass=usuarioContraInput.value.trim()
+    console.log(usuarioNombre)
+    console.log(usuarioPass)
+
+    if(usuarioNombre !== '' && usuarioPass !== ''){
+        inicioSesion.style.display='none'
+        
+    }
+// datos para el registro de usuarios
+})
+cargarDatosRegistro.addEventListener('click',(e)=>{
+    e.preventDefault()
+
+})
 
 carritobtn.addEventListener('click', (e)=>{
     if(!aside.classList.contains('active')){

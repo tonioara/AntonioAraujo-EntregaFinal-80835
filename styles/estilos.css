@@ -1,10 +1,88 @@
-body {
+.body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    color: #fafafa; /* Texto principal */
-    background-color: #000000; /* Fondo general */
+    color: #fafafa; 
+    background-color: #000000; 
 }
+.iniciar-sesion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(136, 40, 40, 0.945); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+  }
+  
+  /* Estilos para las tarjetas de formulario */
+  .form-card {
+    background-color: #979191;
+    
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  .form-card h2 {
+    margin-bottom: 20px;
+    color: #070707;
+  }
+  
+  .form-card form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #3a2c2c;
+  }
+  
+  .form-card form input[type="text"],
+  .form-card form input[type="email"],
+  .form-card form input[type="password"] {
+    width: calc(100% - 20px); /* Ajusta el ancho para el padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-card form button {
+    background-color: #353535;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-card form button:hover {
+    background-color: #4e4e4e;
+  }
+  
+  .form-card p {
+    margin-top: 20px;
+    color: #666;
+  }
+  
+  .form-card p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .form-card p a:hover {
+    text-decoration: underline;
+  }
+  
 .img-ofertas{
     width: 500px;
     height: 650px;
@@ -17,14 +95,14 @@ body {
     border-radius: 50px;
 }
 header {
-    background-color: #000000; /* Fondo del encabezado */
+    background-color: #000000; 
     padding: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     text-align: center;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(255, 244, 244, 0.1); /* Sombra sutil */
+    box-shadow: 0 2px 4px rgba(255, 244, 244, 0.1); 
 }
 .logo{
     max-height: 80px;
@@ -54,11 +132,11 @@ nav li {
     padding: 1rem;
     border-radius: 20px;
     font-weight: bold;
-    transition: color 0.3s ease; /* Transición suave al pasar el ratón */
+    transition: color 0.3s ease; 
 }
 
 .nav-link:hover {
-    color: #ff6600; /* Cambio de color al pasar el ratón */
+    color: #ff6600; 
     background-color:#fff453; 
 }
 
@@ -73,7 +151,7 @@ nav li {
 }
 
 h1 {
-    color: #f7c72c; /* Rojo vibrante para los títulos */
+    color: #f7c72c; 
     font-size: 3rem;
    
 }
