@@ -312,10 +312,12 @@ h1 {
 
 }
 .pizzas h2{
+    color: white;
     font-size: 3rem;
     font-weight: bolder;
 }
 .pizzas p{
+    color: white;
     font-size: 1.5rem;
     font-weight: bolder;
 }
