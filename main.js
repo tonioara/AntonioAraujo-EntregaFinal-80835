@@ -62,6 +62,7 @@ cargarDatosInicio.addEventListener('submit',(e)=>{
         
     }
 // datos para el registro de usuarios
+//SIN TERMINARR AUN 
 })
 cargarDatosRegistro.addEventListener('click',(e)=>{
     e.preventDefault()
@@ -199,7 +200,7 @@ const pizzas =[
     
   }
 function cargarCardHamburguesas(arrayDeProductos){
-    contenedorCard.innerHTML = '';
+    contenedorCard.innerHTML = ''
     arrayDeProductos.forEach((el)=>{
         let card= 
         `
@@ -284,7 +285,7 @@ function eventosParaBorrar(){
             if (hambABorrar) {
                 borrarProducto(hambABorrar);
             } 
-            mostrarCarrito(); // Actualiza el DOM del carrito    
+            mostrarCarrito();
         })
         
     })
@@ -292,7 +293,7 @@ function eventosParaBorrar(){
 }
 function buscadoraIdProducto(idRecibido) {
     let idLimpio = idRecibido.slice(0, -1).trim()
-    console.log('DEBUG: buscadoraIdProducto - ID recibido:', idRecibido, 'ID limpio:', idLimpio);
+    
     let productoEncontrado = hamburguesas.find(el => {
         return el.id.trim() === idLimpio.trim(); 
     })
@@ -300,9 +301,9 @@ function buscadoraIdProducto(idRecibido) {
     if (!productoEncontrado) {
         productoEncontrado = pizzas.find(el => {
             return el.id.trim() === idLimpio.trim();
-        });
+        })
     }
-    console.log('DEBUG: buscadoraIdProducto - Producto encontrado:', productoEncontrado);
+   
     return productoEncontrado
 }
 function borrarProducto(productoABorrar){
