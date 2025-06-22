@@ -178,9 +178,10 @@ const pizzas =[
       alt: "Pizza Vegetariana con vegetales frescos"
     }
   ] 
-  function cargarCarPizzas(){
+  function cargarCarPizzas(arrayDeProductos){
+    contenedorCardPizzas.innerHTML=''
 
-    pizzas.forEach((e)=>{
+    arrayDeProductos.forEach((e)=>{
         let cardPizzas=`
         <div class="card menu-item " style="width: 18rem;" id=${e.id+'V'}>
           <img src="${e.imagen}" class="card-img-top" alt="${e.alt}">
@@ -188,16 +189,18 @@ const pizzas =[
            <h3>${e.nombre}</h3>
            <p class="card-text">${e.descripcion}</p>
            <span class="price">$ ${e.precio}</span>
-           <button id= "add-to-cart "class="button-card">
+           <button class="button-card">
 			Agregar al carrito
 		    </button>
         </div>
         `
         contenedorCardPizzas.innerHTML += cardPizzas
     })
+    
   }
-function cargarCardHamburguesas(){
-    hamburguesas.forEach((el)=>{
+function cargarCardHamburguesas(arrayDeProductos){
+    contenedorCard.innerHTML = '';
+    arrayDeProductos.forEach((el)=>{
         let card= 
         `
         <div class="card menu-item " style="width: 18rem;" id=${el.id+'V'}>
@@ -206,27 +209,52 @@ function cargarCardHamburguesas(){
               <h3>${el.nombre}</h3>
               <p class="card-text">${el.descripcion}</p>
               <span class="price">$ ${el.precio}</span>
-              <button id= "add-to-cart" class="button-card">
+              <button  class="button-card">
 					Agregar al carrito
 				</button>
              
         </div>
         `
         contenedorCard.innerHTML += card
+        
     })
+    
+    
 }
+function MayorPrecioAMenor(){
+    const mayorAMenor= document.getElementById('desdemayor')
+   
+    
+    mayorAMenor.addEventListener('click',(e)=>{
+        e.preventDefault()
+        const hambuCopia=[...hamburguesas]
+       const mayorPrecio= hambuCopia.sort((a,b)=>b.precio-a.precio)
+       cargarCardHamburguesas(mayorPrecio)
+       const pizzasCopia=[...pizzas]
+       const mayorPrecioPizzas=pizzasCopia.sort((a,b)=>b.precio-a.precio)
+       cargarCarPizzas(mayorPrecioPizzas)
+       cargarEventosAgregarCarrito()
+       
+
+    })     
+   }
+   
+
+    
 
 function run (){
     
-    cargarCardHamburguesas()
-    cargarCarPizzas()
+    cargarCardHamburguesas(hamburguesas)
+    cargarCarPizzas(pizzas)
     cargarEventosAgregarCarrito()
     mostrarCarrito()
+    MayorPrecioAMenor()
+   
     
 }
 function cargarEventosAgregarCarrito (){
     const agregarCarritobtn= document.querySelectorAll('.button-card')
-    console.log(agregarCarritobtn)
+    
    
     const btnAgregarCarrito= Array.from(agregarCarritobtn)
     
@@ -234,12 +262,12 @@ function cargarEventosAgregarCarrito (){
     btnAgregarCarrito.forEach((el)=>{
         el.addEventListener('click', (e)=>{
             const idProducto=e.target.parentNode.id
+            
             let hambur=buscadoraIdProducto(idProducto)
             console.log(hambur)
             agregarProductoACarrito(hambur)
             mostrarCarrito()
-
-
+     
         })
     })
 }
@@ -264,15 +292,17 @@ function eventosParaBorrar(){
 }
 function buscadoraIdProducto(idRecibido) {
     let idLimpio = idRecibido.slice(0, -1).trim()
-
+    console.log('DEBUG: buscadoraIdProducto - ID recibido:', idRecibido, 'ID limpio:', idLimpio);
     let productoEncontrado = hamburguesas.find(el => {
         return el.id.trim() === idLimpio.trim(); 
-    });
+    })
+
     if (!productoEncontrado) {
         productoEncontrado = pizzas.find(el => {
             return el.id.trim() === idLimpio.trim();
         });
     }
+    console.log('DEBUG: buscadoraIdProducto - Producto encontrado:', productoEncontrado);
     return productoEncontrado
 }
 function borrarProducto(productoABorrar){
