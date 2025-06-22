@@ -227,8 +227,8 @@ function MayorPrecioAMenor(){
    
     
     mayorAMenor.addEventListener('click',(e)=>{
-        e.preventDefault()
-        const hambuCopia=[...hamburguesas]
+       e.preventDefault()
+       const hambuCopia=[...hamburguesas]
        const mayorPrecio= hambuCopia.sort((a,b)=>b.precio-a.precio)
        cargarCardHamburguesas(mayorPrecio)
        const pizzasCopia=[...pizzas]
@@ -239,7 +239,20 @@ function MayorPrecioAMenor(){
 
     })     
    }
-   
+   function menorPrecioAMayor (){
+    const menorAMayor=document.getElementById('desdemenor')
+    
+     menorAMayor.addEventListener('click', (e)=>{
+        e.preventDefault()
+        const hambuCopia1=[...hamburguesas]
+        const menorPrecio= hambuCopia1.sort((a,b)=>a.precio-b.precio)
+        cargarCardHamburguesas(menorPrecio)
+        const pizzasCopia1=[...pizzas]
+        const menorPrecioPizzas=pizzasCopia1.sort((a,b)=>a.precio-b.precio)
+        cargarCarPizzas(menorPrecioPizzas)
+        cargarEventosAgregarCarrito()
+    })
+   }
 
     
 
@@ -250,6 +263,7 @@ function run (){
     cargarEventosAgregarCarrito()
     mostrarCarrito()
     MayorPrecioAMenor()
+    menorPrecioAMayor ()
    
     
 }
