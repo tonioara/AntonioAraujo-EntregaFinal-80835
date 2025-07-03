@@ -1,0 +1,34 @@
+[
+  {
+    "id": "pizza001",
+    "nombre": "Pizza Margherita Clásica",
+    "descripcion": "La clásica pizza napolitana con salsa de tomate San Marzano, mozzarella fresca, albahaca y un toque de aceite de oliva.",
+    "precio": 300,
+    "imagen": "./Imagenes/pizzas.jpeg",
+    "alt": "Pizza Margherita con albahaca"
+  },
+  {
+    "id": "pizza002",
+    "nombre": "Pizza Pepperoni Picante",
+    "descripcion": "Una explosión de sabor con salsa de tomate, abundante mozzarella y rodajas de pepperoni ligeramente picante.",
+    "precio": 340,
+    "imagen": "./Imagenes/pizzas001.webp",
+    "alt": "Pizza de Pepperoni"
+  },
+  {
+    "id": "pizza003",
+    "nombre": "Pizza Cuatro Estaciones",
+    "descripcion": "Una deliciosa combinación dividida en cuatro secciones: champiñones, jamón cocido, alcachofas y aceitunas negras, sobre base de tomate y mozzarella.",
+    "precio": 320,
+    "imagen": "./Imagenes/pizzas002.jpg",
+    "alt": "Pizza Cuatro Estaciones"
+  },
+  {
+    "id": "pizza004",
+    "nombre": "Pizza Vegetariana Gourmet",
+    "descripcion": "Para los amantes de lo natural: salsa de tomate, mozzarella, pimientos de colores, cebolla morada, champiñones y calabacín a la parrilla.",
+    "precio": 350,
+    "imagen": "./Imagenes/pizzas002.jpg",
+    "alt": "Pizza Vegetariana con vegetales frescos"
+  }
+]

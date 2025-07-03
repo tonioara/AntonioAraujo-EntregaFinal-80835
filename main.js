@@ -1,4 +1,6 @@
 
+
+
 //carrito en localstorage
 let carritoOpen=JSON.parse(localStorage.getItem('carritoAbierto')) || false
 
@@ -6,8 +8,48 @@ let carritoOpen=JSON.parse(localStorage.getItem('carritoAbierto')) || false
 /// USANDO Carrito
 let Carrito=JSON.parse(localStorage.getItem('carrito')) || []
 const total=document.getElementById('total')
+
 const comprar=document.getElementById('comprar')
 comprar.addEventListener('click',()=>{
+    if(Carrito.length== 0){
+        Swal.fire({
+            title:'No tiene nada en el carrito',
+            showConfirmButton: true,
+            timer:1500
+        })
+    }
+    Swal.fire({
+        title: "Termaninando su compra?",
+        text: "Estas seguro que quiere terminar su compra?",
+        background: 'rgba(87, 77, 77, 0.94)',
+        color: 'white',
+        
+        showCancelButton: true,
+        confirmButtonColor: "#998f8f",
+        cancelButtonColor: "#998f8f",
+        confirmButtonText: " Si! "
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+             title: "Gracias por su compra",
+             text: "Pronto le haremos llegar sus productos",
+             background: 'rgba(97, 93, 93, 0.94)',
+              color: 'white',
+          })
+          Carrito=[]
+          localStorage.removeItem('carrito')
+          mostrarCarrito();
+        }else{
+            Swal.fire({
+                title:'Puede seguir comprando...',
+                timer:1000,
+                background: 'rgba(75, 73, 73, 0.94)',
+                color: 'white',
+                showConfirmButton: false,
+                showCancelButton:false
+            })
+        }
+      });
     Carrito=[]
     localStorage.removeItem('carrito')
     mostrarCarrito();
@@ -59,14 +101,25 @@ cargarDatosInicio.addEventListener('submit',(e)=>{
 
     if(usuarioNombre !== '' && usuarioPass !== ''){
         inicioSesion.style.display='none'
+        Swal.fire({
+            titleText: 'Bienvenido a BurguerHouse  ' + usuarioNombre+ ' !!',
+            icon: "success",
+            background: 'rgba(233, 81, 81, 0.94)',
+            color: 'white',
+            timer: 3000,
+            
+            showConfirmButton: false,
+        })
+
         
     }
 // datos para el registro de usuarios
 //SIN TERMINARR AUN 
 })
+
+
 cargarDatosRegistro.addEventListener('click',(e)=>{
     e.preventDefault()
-
 })
 
 carritobtn.addEventListener('click', (e)=>{
@@ -87,98 +140,24 @@ else{
 }*/
 
 
-const hamburguesas = [
-    {
-        id: "001",
-        nombre: "Hamburguesa Clásica",
-        descripcion: "Carne 100% de res, lechuga fresca, tomate, cebolla morada, pepinillos y nuestra salsa especial de la casa.",
-        imagen: "./Imagenes/burguer-simple.jpeg",
-        precio: 280
-    },
-    {
-        id: "002",
-        nombre: "Hamburguesa BBQ Extrema",
-        descripcion: "Doble carne de res, aros de cebolla crujientes, tocino ahumado, queso cheddar derretido y una generosa capa de salsa BBQ ahumada.",
-        imagen: "./Imagenes/burguer-completa.jpeg",
-        precio: 350
-    },
-    {
-        id: "003",
-        nombre: "Hamburguesa Vegetariana Delicia",
-        descripcion: "Patty artesanal de lentejas y champiñones, aguacate fresco, lechuga, tomate y mayonesa vegana, todo en pan integral tostado.",
-        imagen: "./Imagenes/burguer-remolacha.jpeg",
-        precio: 320
-    },
-    {
-        id: "004",
-        nombre: "Hamburguesa Picante Explosiva",
-        descripcion: "Carne de res, queso pepper jack, jalapeños en rodajas, cebolla caramelizada y nuestra salsa extra picante para los más valientes.",
-        imagen: "./Imagenes/burguer-negra.jpeg",
-        precio: 410
-    },
-    {
-        id: "005",
-        nombre: "Hamburguesa Mañanera con Huevo",
-        descripcion: "Carne de res jugosa, queso suizo, tocino crujiente y un huevo frito perfectamente cocido, ideal para cualquier momento del día.",
-        imagen: "./Imagenes/Burguer-huevo.jpeg",
-        precio: 300
-    },
-    {
-        id: "006",
-        nombre: "Hamburguesa Doble Queso",
-        descripcion: "Dos patties de carne de res, doble ración de queso americano y cheddar, pepinillos y cebolla picada con nuestra salsa especial.",
-        imagen: "./Imagenes/burguer-aros.jpeg", 
-        precio: 330
-    },
-    {
-        id: "007",
-        nombre: "Hamburguesa Hawaiana Tropical",
-        descripcion: "Carne de res, queso provolone, jamón cocido y una rodaja de piña a la parrilla con un toque de salsa teriyaki.",
-        imagen: "./Imagenes/Burguer-especial.jpeg", 
-        precio: 400
-    },
-    {
-        id: "008",
-        nombre: "Hamburguesa Gourmet de Champiñones",
-        descripcion: "Carne de res, champiñones salteados con ajo y hierbas, queso suizo gratinado y mayonesa trufada en pan brioche.",
-        imagen: "./Imagenes/burguer-completa.jpeg", 
-        precio: 390
+let hamburguesas
+let pizzas
+
+async function prodcutosObtenidos() {
+    try{
+        const resp= await fetch('./dataHamburguesas.json')
+        const dataHamb= await resp.json()
+        hamburguesas=dataHamb
+        console.log(hamburguesas)
+        const resp2= await fetch('./dataPizzas.json')
+        const dataPizzas= await resp2.json()
+        pizzas=dataPizzas
+        console.log(pizzas)
     }
-]
-const pizzas =[
-    {
-      id: "pizza001",
-      nombre: "Pizza Margherita Clásica",
-      descripcion: "La clásica pizza napolitana con salsa de tomate San Marzano, mozzarella fresca, albahaca y un toque de aceite de oliva.",
-      precio: 300,
-      imagen: "./Imagenes/pizzas.jpeg",
-      alt: "Pizza Margherita con albahaca"
-    },
-    {
-     id: "pizza002",
-     nombre: "Pizza Pepperoni Picante",
-     descripcion: "Una explosión de sabor con salsa de tomate, abundante mozzarella y rodajas de pepperoni ligeramente picante.",
-     precio: 340,
-     imagen: "./Imagenes/pizzas001.webp",
-     alt: "Pizza de Pepperoni"
-    },
-    {
-     id: "pizza003",
-     nombre: "Pizza Cuatro Estaciones",
-     descripcion: "Una deliciosa combinación dividida en cuatro secciones: champiñones, jamón cocido, alcachofas y aceitunas negras, sobre base de tomate y mozzarella.",
-     precio: 320,
-     imagen: "./Imagenes/pizzas002.jpg",
-     alt: "Pizza Cuatro Estaciones"
-    },
-    {
-      id: "pizza004",
-      nombre: "Pizza Vegetariana Gourmet",
-      descripcion: "Para los amantes de lo natural: salsa de tomate, mozzarella, pimientos de colores, cebolla morada, champiñones y calabacín a la parrilla.",
-      precio:350,
-      imagen: "./Imagenes/pizzas002.jpg",
-      alt: "Pizza Vegetariana con vegetales frescos"
+    catch(error){
+        console.error(error)
     }
-  ] 
+}
   function cargarCarPizzas(arrayDeProductos){
     contenedorCardPizzas.innerHTML=''
 
@@ -256,8 +235,8 @@ function MayorPrecioAMenor(){
 
     
 
-function run (){
-    
+async function run (){
+    await prodcutosObtenidos();
     cargarCardHamburguesas(hamburguesas)
     cargarCarPizzas(pizzas)
     cargarEventosAgregarCarrito()
@@ -279,6 +258,16 @@ function cargarEventosAgregarCarrito (){
             const idProducto=e.target.parentNode.id
             
             let hambur=buscadoraIdProducto(idProducto)
+            Swal.fire({
+                titleText: 'Agregaste ' + hambur.nombre + ' al Carrito',
+                imageUrl: hambur.imagen,
+                background: 'rgba(97, 93, 93, 0.94)',
+                color:'white',
+                toast: true,
+                timer: 1500,
+                showConfirmButton: false,
+                position: 'bottom-start',
+            })
             console.log(hambur)
             agregarProductoACarrito(hambur)
             mostrarCarrito()
@@ -298,6 +287,15 @@ function eventosParaBorrar(){
             let hambABorrar = buscadoraIdProducto(idDesdeHTML);
             if (hambABorrar) {
                 borrarProducto(hambABorrar);
+                Swal.fire({
+                    titleText: 'Eliminaste  ' + hambABorrar.nombre + ' del Carrito',
+                    toast: true,
+                    timer: 1500,
+                    background: 'rgba(97, 93, 93, 0.94)',
+                    color:'white',
+                    showConfirmButton: false,
+                    position: 'top',
+                })
             } 
             mostrarCarrito();
         })

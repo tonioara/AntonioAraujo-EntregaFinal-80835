@@ -1,0 +1,59 @@
+[
+  {
+    "id": "001",
+    "nombre": "Hamburguesa Clásica",
+    "descripcion": "Carne 100% de res, lechuga fresca, tomate, cebolla morada, pepinillos y nuestra salsa especial de la casa.",
+    "imagen": "./Imagenes/burguer-simple.jpeg",
+    "precio": 280
+  },
+  {
+    "id": "002",
+    "nombre": "Hamburguesa BBQ Extrema",
+    "descripcion": "Doble carne de res, aros de cebolla crujientes, tocino ahumado, queso cheddar derretido y una generosa capa de salsa BBQ ahumada.",
+    "imagen": "./Imagenes/burguer-completa.jpeg",
+    "precio": 350
+  },
+  {
+    "id": "003",
+    "nombre": "Hamburguesa Vegetariana Delicia",
+    "descripcion": "Patty artesanal de lentejas y champiñones, aguacate fresco, lechuga, tomate y mayonesa vegana, todo en pan integral tostado.",
+    "imagen": "./Imagenes/burguer-remolacha.jpeg",
+    "precio": 320
+  },
+  {
+    "id": "004",
+    "nombre": "Hamburguesa Picante Explosiva",
+    "descripcion": "Carne de res, queso pepper jack, jalapeños en rodajas, cebolla caramelizada y nuestra salsa extra picante para los más valientes.",
+    "imagen": "./Imagenes/burguer-negra.jpeg",
+    "precio": 410
+  },
+  {
+    "id": "005",
+    "nombre": "Hamburguesa Mañanera con Huevo",
+    "descripcion": "Carne de res jugosa, queso suizo, tocino crujiente y un huevo frito perfectamente cocido, ideal para cualquier momento del día.",
+    "imagen": "./Imagenes/Burguer-huevo.jpeg",
+    "precio": 300
+  },
+  {
+    "id": "006",
+    "nombre": "Hamburguesa Doble Queso",
+    "descripcion": "Dos patties de carne de res, doble ración de queso americano y cheddar, pepinillos y cebolla picada con nuestra salsa especial.",
+    "imagen": "./Imagenes/burguer-aros.jpeg",
+    "precio": 330
+  },
+  {
+    "id": "007",
+    "nombre": "Hamburguesa Hawaiana Tropical",
+    "descripcion": "Carne de res, queso provolone, jamón cocido y una rodaja de piña a la parrilla con un toque de salsa teriyaki.",
+    "imagen": "./Imagenes/Burguer-especial.jpeg",
+    "precio": 400
+  },
+  {
+    "id": "008",
+    "nombre": "Hamburguesa Gourmet de Champiñones",
+    "descripcion": "Carne de res, champiñones salteados con ajo y hierbas, queso suizo gratinado y mayonesa trufada en pan brioche.",
+    "imagen": "./Imagenes/burguer-completa.jpeg",
+    "precio": 390
+  }
+]
+
