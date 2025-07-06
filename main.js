@@ -89,6 +89,8 @@ verIniciarCard.addEventListener('click',()=>{
     registerCard.style.display='none'
 })
 //Datos para el inicio de sesion
+let usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || []
+
 const usuarioNombreInput=document.getElementById('username')
 const usuarioContraInput=document.getElementById('password')
 
@@ -96,30 +98,122 @@ cargarDatosInicio.addEventListener('submit',(e)=>{
     e.preventDefault()
     usuarioNombre=usuarioNombreInput.value.trim()
     usuarioPass=usuarioContraInput.value.trim()
-    console.log(usuarioNombre)
-    console.log(usuarioPass)
+   
 
-    if(usuarioNombre !== '' && usuarioPass !== ''){
-        inicioSesion.style.display='none'
+    let usuarioALoguear= usuariosRegistrados.find((usuario)=>
+
+          usuario.name===usuarioNombre && 
+          usuario.contraseña===usuarioPass
+    )
+    if (!usuarioALoguear) {
+		Swal.fire({
+            icon: 'error',
+            title: 'Error de inicio de sesión',
+            text: 'Nombre de usuario o contraseña incorrectos.',
+            background: 'rgba(233, 81, 81, 0.94)',
+            color: 'white',
+        });
+	} else {
+		inicioSesion.style.display='none'
         Swal.fire({
-            titleText: 'Bienvenido a BurguerHouse  ' + usuarioNombre+ ' !!',
-            icon: "success",
+            titleText: '¡Bienvenido a BurguerHouse ' + usuarioNombre + '!',
+            icon: 'success',
             background: 'rgba(233, 81, 81, 0.94)',
             color: 'white',
             timer: 3000,
-            
             showConfirmButton: false,
-        })
-
+        });
         
-    }
-// datos para el registro de usuarios
-//SIN TERMINARR AUN 
+        usuarioNombreInput.value = '';
+        usuarioContraInput.value = '';
+}
 })
 
+// datos para el registro de usuarios
+//SIN TERMINARR AUN 
+//})
 
-cargarDatosRegistro.addEventListener('click',(e)=>{
+const usuarioNombreRegInput=document.getElementById('reg-email')
+const usuarioContraRegInput=document.getElementById('reg-password')
+const usuarioContraInputConfir=document.getElementById('reg-confirm-password')
+
+cargarDatosRegistro.addEventListener('submit',(e)=>{
     e.preventDefault()
+    usuarioRegistroNombre=usuarioNombreRegInput.value.trim()
+    usuarioRegistroContra=usuarioContraRegInput.value.trim()
+    usuarioRegistroContraConfirm=usuarioContraInputConfir.value.trim()
+   
+
+   
+	
+   
+   
+    if (!usuarioRegistroNombre || !usuarioRegistroContra || !usuarioRegistroContraConfirm) {
+        Swal.fire({
+            icon: 'Error',
+            title: 'Campos incompletos',
+            text: 'Por favor, rellena todos los campos para registrarte.',
+            background: 'rgba(233, 81, 81, 0.94)',
+            color: 'white',
+        })
+        return
+    }
+        if (usuarioRegistroContra !== usuarioRegistroContraConfirm) {
+            Swal.fire({
+                icon: 'Error',
+                title: 'Contraseñas no coinciden',
+                text: 'Las contraseñas no coinciden. Por favor, inténtalo de nuevo.',
+                background: 'rgba(233, 81, 81, 0.94)',
+                color: 'white',
+            })
+            return
+        }
+    
+        let usuarioExistente = usuariosRegistrados.find(
+            (usuario) => usuario.name === usuarioRegistroNombre
+        )
+    
+        if (usuarioExistente) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Usuario ya registrado',
+                text: 'Ya existe una cuenta con este nombre de usuario.',
+                background: 'rgba(233, 81, 81, 0.94)',
+                color: 'white',
+            })
+        } else {
+            
+            const nuevoUsuario = {
+                name: usuarioRegistroNombre, 
+                contraseña: usuarioRegistroContra, 
+                
+            }
+    
+            
+            usuariosRegistrados.push(nuevoUsuario);
+    
+           
+            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
+    
+            Swal.fire({
+                title: '¡Registro Exitoso!',
+                text: 'Ahora puedes iniciar sesión con tu nueva cuenta.',
+                icon: 'success',
+                background: 'rgba(233, 81, 81, 0.94)',
+                color: 'white',
+                timer: 3000,
+                showConfirmButton: false,
+            })
+    
+            
+            registerCard.style.display = 'none';
+            inicioCard.style.display = 'flex';
+    
+            
+            usuarioNombreRegInput.value = '';
+            usuarioContraRegInput.value = '';
+            usuarioContraInputConfir.value = '';
+        }
 })
 
 carritobtn.addEventListener('click', (e)=>{
@@ -131,14 +225,6 @@ carritobtn.addEventListener('click', (e)=>{
     aside.classList.toggle('active')
     localStorage.setItem('carritoAbierto',JSON.stringify(carritoOpen))
 })
-/*
-if(carritoOpen){
-    aside.classList.add('active')
-}
-else{
-    aside.classList.remove('active')
-}*/
-
 
 let hamburguesas
 let pizzas
@@ -148,11 +234,11 @@ async function prodcutosObtenidos() {
         const resp= await fetch('./dataHamburguesas.json')
         const dataHamb= await resp.json()
         hamburguesas=dataHamb
-        console.log(hamburguesas)
+        
         const resp2= await fetch('./dataPizzas.json')
         const dataPizzas= await resp2.json()
         pizzas=dataPizzas
-        console.log(pizzas)
+        
     }
     catch(error){
         console.error(error)
@@ -268,7 +354,7 @@ function cargarEventosAgregarCarrito (){
                 showConfirmButton: false,
                 position: 'bottom-start',
             })
-            console.log(hambur)
+           
             agregarProductoACarrito(hambur)
             mostrarCarrito()
      
